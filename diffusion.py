@@ -614,36 +614,6 @@ class Trainer(object):
 
         accelerator.print('training complete')
 
-device=torch.device("cuda:0")
-#Unet3d(24)=8851997 parameters
-#Unet2d(32)=9194819 parameters
-
-unetmodel = Unet2d(32)
-
-print(sum(p.numel() for p in unetmodel.parameters()))
-folder ="Hands/Hands_New/"
-batch_size=32
-model=GaussianDiffusion(unetmodel, image_size=64)
-model.to(device)
-trainer = Trainer(model, folder,device=device, train_batch_size=batch_size,
-                  fp16=False, amp=False, train_num_steps=500000, train_lr=0.002,
-                  ema_decay=0.995, ema_update_every=5, save_and_sample_every=5000,
-                  tag='', results_folder='./results-hands-2d-v1')
-#last_weights='72'
-#trainer.load(last_weights)
-trainer.train()
-
-unetmodel = Unet3d(24)
-
-print(sum(p.numel() for p in unetmodel.parameters()))
-folder ="Hands/Hands_New/"
-batch_size=32
-model=GaussianDiffusion(unetmodel, image_size=64)
-model.to(device)
-trainer = Trainer(model, folder,device=device, train_batch_size=batch_size,
-                  fp16=False, amp=False, train_num_steps=500000, train_lr=0.002,
-                  ema_decay=0.995, ema_update_every=5, save_and_sample_every=5000,
-                  tag='', results_folder='./results-hands-3d-v1')
 
 """
 CITATIONS:
