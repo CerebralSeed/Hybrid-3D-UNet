@@ -12,3 +12,14 @@ https://drive.google.com/drive/folders/1-TbO244Ilgc2-V5S4SlvImWi8HDCzpae?usp=sha
 Results:
 
 ![alt text](https://github.com/CerebralSeed/Hybrid-3D-UNet/blob/main/compare-chart.jpg?raw=true)
+
+
+Samples after 100 Epochs:
+
+UNet (2D)
+
+![alt text](https://github.com/CerebralSeed/Hybrid-3D-UNet/blob/main/2d_train_results/sample-100-loss-0.07358751328475774.png?raw=true)
+
+UNet 3D Hybrid
+
+![alt text](https://github.com/CerebralSeed/Hybrid-3D-UNet/blob/main/3d_train_results/sample-100-loss-0.05175705623235553.png)
