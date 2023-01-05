@@ -1,12 +1,12 @@
 # Hybrid-3D-UNet
 #### Model for Hybrid 3D UNet
-
+Welcome to the Github for Hybrid 3d UNet for PyTorch! This makes some modifications to the UNet to allow for 
 
 ### Article:
 https://jjohnson-777.medium.com/fixing-stable-diffusions-achilles-heel-43da2563647e
 
 ### Usage:
-1. First install Hybrid 3d Unet for PyTorch Git Repo with: 
+1. First install Hybrid 3d UNet for PyTorch Git Repo with: 
 
 ```
 pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3dunet
@@ -14,7 +14,26 @@ pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3du
 
 2. Scripts ready to run each model are in the examples folder. Update the folder for images you'd like to train on and adjust any other arguments to your liking.
 
+### 2dto3d, 3dto2d, 1dto2d, and 2dto1d Modules
+After installing Hybrid 3d UNet for Pytorch, you can use the modules to transition from 1d to 2d and vice versa, or 2d to 3d and vice versa via:
+```python
+from hybrid3d_unet_pytorch.diffsubmodules import Conv2dtoConv1d, Conv1dtoConv2d, Conv2dtoConv3d, Conv3dtoConv2d
 
+# Example script
+
+updim = Conv1dtoConv2d(in_channels = 3, out_channels = 16, depth_dim = 32, kernel = 3, bias = False)
+
+dummy_tensor = torch.rand(5, 3, 32)
+
+output = updim(dummy_tensor)
+
+print(output.size())
+
+```
+
+```python
+
+```
 
 ### Model Weights: 
 
