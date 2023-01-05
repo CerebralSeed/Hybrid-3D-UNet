@@ -4,7 +4,7 @@ import math
 from einops import rearrange, reduce
 from einops.layers.torch import Rearrange
 import torch.nn.functional as F
-import diffsubmodules as dsm
+import hybrid3dunet.diffsubmodules as dsm
 
 import time
 
