@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-exec(open('run_files/version.py').read())
+exec(open('hybrid3d-unet-pytorch/version.py').read())
 
 setup(
   name = 'hybrid3d-unet-pytorch',
