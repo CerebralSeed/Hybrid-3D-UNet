@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
-exec(open('hybrid3d-unet-pytorch/version.py').read())
+exec(open('hybrid3d_unet_pytorch/version.py').read())
 
 setup(
-  name = 'hybrid3d-unet-pytorch',
+  name = 'hybrid-3d-unet',
   packages = find_packages(),
   version = __version__,
   license='MIT',
