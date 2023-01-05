@@ -2,7 +2,7 @@
 #### Model for Hybrid 3D UNet
 Welcome to the Github for Hybrid 3d UNet for PyTorch! This makes some modifications to the UNet to allow for better modeling of 3d elements with many degrees of freedom. This does so by using a learnable 3d kernel. 
 
-Module classes are also available for use in various models(see below). 
+Module classes are also available for use in your own custom models(see below). 
 
 More models will be added to incorporate and leverage the benefits of 3d modeling in the future. 
 
