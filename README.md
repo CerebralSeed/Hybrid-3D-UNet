@@ -18,6 +18,41 @@ pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3du
 
 2. Scripts ready to run each model are in the `/examples` folder. Update the folder for images you'd like to train on and adjust any other arguments to your liking.
 
+### Loading and Saving
+
+The model will automatically save at `save_and_sample_every` number of steps, which can be set when instantiating the `Trainer` class. These will save as `sample-n.pt` files in the results folder specified, where n is the number of epochs passed. 
+
+To load a model, after you instantiate the `Trainer` class, let's say we had a model in the results folder titled `sample-32.pt` - simply use `trainer.load('32')` before starting `trainer.train()`. That will load the model and all of the settings as they were when that model saved.
+
+For example, if you downloaded the Unet3d weights(see below section "Model Weights" for download link for weights trained to 100 epochs), you could create a folder in the working directory titled `/results` and then place the weights in that folder. Then you can run:
+
+```python
+
+import torch
+from hybrid3dunet.diffsubmodels import Unet2d, Unet3d
+from hybrid3dunet.diffusion import GaussianDiffusion, Trainer
+
+
+device=torch.device("cuda:0") # set your device
+
+unetmodel = Unet3d(24) 
+
+print(sum(p.numel() for p in unetmodel.parameters()))
+model=GaussianDiffusion(unetmodel, image_size=64)
+model.to(device)
+folder ="Hands/Hands_New/" #set your data folder
+batch_size=32
+
+trainer = Trainer(model, folder,device=device, train_batch_size=batch_size,
+                  fp16=False, amp=False, train_num_steps=500000, train_lr=0.002,
+                  ema_decay=0.995, ema_update_every=5, save_and_sample_every=5000,
+                  tag='', results_folder='./results')
+
+trainer.load('100')
+trainer.train()
+```
+
+
 ### Using Hybrid 3d UNet Modules in your Models
 After installing Hybrid 3d UNet for Pytorch, you can use the modules in your PyTorch models to transition from 1d to 2d and vice versa, or 2d to 3d and vice versa via:
 ```python
