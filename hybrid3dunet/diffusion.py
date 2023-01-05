@@ -24,7 +24,6 @@ from tqdm.auto import tqdm
 from ema_pytorch import EMA
 
 from accelerate import Accelerator
-from diffsubmodels import Unet2d, Unet3d
 
 
 def exists(x):
