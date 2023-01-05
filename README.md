@@ -15,7 +15,7 @@ pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3du
 2. Scripts ready to run each model are in the examples folder. Update the folder for images you'd like to train on and adjust any other arguments to your liking.
 
 ### 2dto3d, 3dto2d, 1dto2d, and 2dto1d Modules
-After installing Hybrid 3d UNet for Pytorch, you can use the modules to transition from 1d to 2d and vice versa, or 2d to 3d and vice versa via:
+After installing Hybrid 3d UNet for Pytorch, you can use the modules in your PyTorch models to transition from 1d to 2d and vice versa, or 2d to 3d and vice versa via:
 ```python
 from hybrid3dunet.diffsubmodules import Conv2dtoConv1d, Conv1dtoConv2d, Conv2dtoConv3d, Conv3dtoConv2d
 
