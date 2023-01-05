@@ -1,3 +1,3 @@
-import hybrid3d-unet-pytorch.diffsubmodels
-import hybrid3d-unet-pytorch.diffusion
-import hybrid3d-unet-pytorch.diffsubmodules
+import hybrid3dunet.diffsubmodels
+import hybrid3dunet.diffusion
+import hybrid3dunet.diffsubmodules
