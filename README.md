@@ -14,18 +14,37 @@ pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3du
 
 2. Scripts ready to run each model are in the `/examples` folder. Update the folder for images you'd like to train on and adjust any other arguments to your liking.
 
-### 2dto3d, 3dto2d, 1dto2d, and 2dto1d Modules
+### Using Hybrid 3d UNet Modules in your Models
 After installing Hybrid 3d UNet for Pytorch, you can use the modules in your PyTorch models to transition from 1d to 2d and vice versa, or 2d to 3d and vice versa via:
 ```python
+import torch
 from hybrid3dunet.diffsubmodules import Conv2dtoConv1d, Conv1dtoConv2d, Conv2dtoConv3d, Conv3dtoConv2d
 
-# Example script
-
-updim = Conv1dtoConv2d(in_channels = 3, out_channels = 16, depth_dim = 32, kernel = 3, bias = False)
+updim1d2d = Conv1dtoConv2d(in_channels=3, out_channels=16, depth_dim=32, kernel=3, bias=False)
 
 dummy_tensor = torch.rand(5, 3, 32)
 
-output = updim(dummy_tensor)
+output = updim1d2d(dummy_tensor)
+
+print(output.size())
+
+updim2d3d = Conv2dtoConv3d(in_channels=16, out_channels=16, depth_dim=32, kernel=3, bias=False)
+
+output = updim2d3d(output)
+
+print(output.size())
+
+downdim3d2d = Conv3dtoConv2d(in_channels=16, out_channels=16, depth_dim=32, kernel=None,
+                             bias=False)  # kernel defaults to size of 1
+
+output = downdim3d2d(output)
+
+print(output.size())
+
+downdim2d1d = Conv2dtoConv1d(in_channels=16, out_channels=3, depth_dim=32, kernel=None,
+                             bias=False)
+
+output = downdim2d1d(output)
 
 print(output.size())
 
@@ -33,19 +52,8 @@ print(output.size())
 
 ```python
 torch.Size([5, 16, 32, 32])
-```
-
-And in reverse:
-
-```python
-downdim = Conv2dtoConv1d(in_channels=16, out_channels=3, depth_dim=32, kernel=None, bias=False) #kernel defaults to size of 1
-
-output = downdim(output)
-
-print(output.size())
-```
-
-```python
+torch.Size([5, 16, 32, 32, 32])
+torch.Size([5, 16, 32, 32])
 torch.Size([5, 3, 32])
 ```
 
