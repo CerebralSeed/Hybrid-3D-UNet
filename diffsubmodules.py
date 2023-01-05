@@ -101,8 +101,8 @@ class WeightStandardizedConv3d(nn.Conv3d):
         eps = 1e-5 if x.dtype == torch.float32 else 1e-3
 
         weight = self.weight
-        mean = reduce(weight, 'o ... -> o 1 1 1', 'mean')
-        var = reduce(weight, 'o ... -> o 1 1 1', partial(torch.var, unbiased = False))
+        mean = reduce(weight, 'o ... -> o 1 1 1 1', 'mean')
+        var = reduce(weight, 'o ... -> o 1 1 1 1', partial(torch.var, unbiased = False))
         normalized_weight = (weight - mean) * (var + eps)**(1/3.)
 
         return F.conv3d(x, normalized_weight, self.bias, self.stride, self.padding, self.dilation, self.groups)
@@ -533,7 +533,8 @@ class Conv1dtoConv2d(nn.Module):
     def __init__(self, in_channels, out_channels, depth_dim, kernel=None, bias=False):
         super(Conv1dtoConv2d, self).__init__()
         self.depth_dim = depth_dim
-        assert kernel%2==1
+        if kernel:
+            assert kernel % 2 == 1
         if not kernel:
             kernel_size=1
             padding=0
@@ -553,7 +554,8 @@ class Conv2dtoConv3d(nn.Module):
     def __init__(self, in_channels, out_channels, depth_dim, kernel=None, bias=False):
         super(Conv2dtoConv3d, self).__init__()
         self.depth_dim = depth_dim
-        assert kernel % 2 == 1
+        if kernel:
+            assert kernel % 2 == 1
         if not kernel:
             kernel_size=1
             padding=0
@@ -576,7 +578,8 @@ class Conv2dtoConv1d(nn.Module):
     def __init__(self, in_channels, out_channels, depth_dim, kernel=None, bias=False):
         super(Conv2dtoConv1d, self).__init__()
         self.depth_dim=depth_dim
-        assert kernel % 2 == 1
+        if kernel:
+            assert kernel % 2 == 1
         if not kernel:
             kernel_size=1
             padding=0
@@ -596,7 +599,8 @@ class Conv3dtoConv2d(nn.Module):
     def __init__(self, in_channels, out_channels, depth_dim, kernel=None, bias=False):
         super(Conv3dtoConv2d, self).__init__()
         self.depth_dim = depth_dim
-        assert kernel % 2 == 1
+        if kernel:
+            assert kernel % 2 == 1
         if not kernel:
             kernel_size=1
             padding=0
