@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 exec(open('run_files/version.py').read())
 
 setup(
-  name = '3d-unet-hybrid-pytorch',
+  name = 'hybrid3d-unet-pytorch',
   packages = find_packages(),
   version = __version__,
   license='MIT',
-  description = '3D Unet Hybrid - Pytorch',
+  description = 'Hybrid 3D Unet - Pytorch',
   author = 'Jeremiah Johnson',
   author_email = 'j.johnson.bbt@gmail.com',
   url = 'https://github.com/CerebralSeed/Hybrid-3D-UNet',
