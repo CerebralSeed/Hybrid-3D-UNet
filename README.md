@@ -3,6 +3,14 @@ Model for Hybrid 3D UNet
 
 
 Article:
+https://jjohnson-777.medium.com/fixing-stable-diffusions-achilles-heel-43da2563647e
+
+Usage:
+First install Git Repo with: 
+
+```
+pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3d-unet-pytorch
+```
 
 
 Model Weights: 
