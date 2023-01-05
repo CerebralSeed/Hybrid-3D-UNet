@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 exec(open('hybrid3dunet/version.py').read())
 
 setup(
-  name = 'hybrid-3d-unet',
+  name = 'hybrid3dunet',
   packages = find_packages(),
   version = __version__,
   license='MIT',
