@@ -24,7 +24,8 @@ setup(
     'pillow',
     'torch',
     'torchvision',
-    'tqdm'
+    'tqdm',
+    'pandas'
   ],
   classifiers=[
     'Development Status :: 4 - Beta',
