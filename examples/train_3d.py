@@ -5,7 +5,7 @@ from hybrid3d_unet_pytorch.diffusion import GaussianDiffusion, Trainer
 
 device=torch.device("cuda:0")
 
-unetmodel = Unet3d(24)
+unetmodel = Unet3d(24) #must be divisible by 8 if arg resnet_block_groups is left as default of 8 
 
 print(sum(p.numel() for p in unetmodel.parameters()))
 model=GaussianDiffusion(unetmodel, image_size=64)
