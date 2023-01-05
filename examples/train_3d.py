@@ -1,6 +1,6 @@
 import torch
-from diffsubmodels import Unet2d, Unet3d
-from diffusion import GaussianDiffusion, Trainer
+from hybrid3d_unet_pytorch.diffsubmodels import Unet2d, Unet3d
+from hybrid3d_unet_pytorch.diffusion import GaussianDiffusion, Trainer
 
 
 device=torch.device("cuda:0")
