@@ -9,7 +9,7 @@ https://jjohnson-777.medium.com/fixing-stable-diffusions-achilles-heel-43da25636
 1. First install Hybrid 3d Unet for PyTorch Git Repo with: 
 
 ```
-pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid-3d-unet
+pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3dunet
 ```
 
 2. Scripts ready to run each model are in the examples folder. Update the folder for images you'd like to train on and adjust any other arguments to your liking.
