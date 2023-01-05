@@ -12,7 +12,7 @@ https://jjohnson-777.medium.com/fixing-stable-diffusions-achilles-heel-43da25636
 pip install git+https://github.com/CerebralSeed/Hybrid-3D-UNet.git#egg=hybrid3dunet
 ```
 
-2. Scripts ready to run each model are in the examples folder. Update the folder for images you'd like to train on and adjust any other arguments to your liking.
+2. Scripts ready to run each model are in the `/examples` folder. Update the folder for images you'd like to train on and adjust any other arguments to your liking.
 
 ### 2dto3d, 3dto2d, 1dto2d, and 2dto1d Modules
 After installing Hybrid 3d UNet for Pytorch, you can use the modules in your PyTorch models to transition from 1d to 2d and vice versa, or 2d to 3d and vice versa via:
@@ -32,7 +32,21 @@ print(output.size())
 ```
 
 ```python
+torch.Size([5, 16, 32, 32])
+```
 
+And in reverse:
+
+```python
+downdim = Conv2dtoConv1d(in_channels=16, out_channels=3, depth_dim=32, kernel=None, bias=False) #kernel defaults to size of 1
+
+output = downdim(output)
+
+print(output.size())
+```
+
+```python
+torch.Size([5, 3, 32])
 ```
 
 ### Model Weights: 
