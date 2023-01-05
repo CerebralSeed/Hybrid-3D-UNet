@@ -4,8 +4,6 @@ from diffusion import GaussianDiffusion, Trainer
 
 
 device=torch.device("cuda:0")
-#Unet3d(24)=8851997 parameters
-#Unet2d(32)=9194819 parameters
 
 unetmodel = Unet2d(32)
 
